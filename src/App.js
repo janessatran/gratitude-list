@@ -2,25 +2,150 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+const generateKey = (pre) => {
+  return `${pre}_${new Date().getTime()}`;
 }
 
-export default App;
+let happyThings = [];
+// happyThings.push({ index: 1, value: 'having a roof over my head', key: generateKey('having a roof') })
+
+
+class GratitudeList extends React.Component {
+  render() {
+    let items = this.props.items.map((item) => {
+      return (
+        <GratitudeListItem
+          key={item.key}
+          item={item}
+          removeItem={this.props.removeItem}
+        />
+      );
+    });
+    return (
+      <ul className="list-group"> {items} </ul>
+    );
+  }
+}
+
+class GratitudeListItem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onClickClose = this.onClickClose.bind(this);
+  }
+
+  onClickClose() {
+    let index = parseInt(this.props.index);
+    this.props.removeItem(index);
+    console.log('hello!');
+  }
+
+  render() {
+    return (
+      <li className="list-group-item">
+        <div className="item">
+          <span
+            className="glyphicon glyphicon-ok icon"
+            aria-hidden="true"
+          >
+
+          </span>
+          {this.props.item.value}
+          <button
+            type="button"
+            className="close"
+            onClick={this.onClickClose}>&times;
+            </button>
+        </div>
+      </li>
+    )
+  }
+}
+
+class GratitudeForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    this.refs.itemName.focus();
+  }
+
+  onSubmit(event) {
+    event.preventDefault();
+    let newItemValue = this.refs.itemName.value;
+
+    if (newItemValue) {
+      this.props.addItem({ newItemValue });
+      this.refs.form.reset();
+    }
+  }
+  render() {
+    return (
+      <form
+        ref="form"
+        onSubmit={this.onSubmit}
+        className="form-inline"
+      >
+        <input
+          type="text"
+          ref="itemName"
+          className="form-control"
+          placeholder="I'm grateful for..."
+        />
+        <button
+          type="submit"
+          className="btn btn-default">Add
+      </button>
+      </form>
+    );
+  }
+}
+
+class GratitudeListHeader extends React.Component {
+  render() {
+    return <h1>__ Reasons to be Happy</h1>;
+  }
+}
+
+class GratitudeListApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.addItem = this.addItem.bind(this);
+    this.removeItem = this.removeItem.bind(this);
+    this.state = { happyThings: [], };
+  }
+
+  addItem(happyThing) {
+    console.log(happyThing);
+    happyThings.unshift({
+      index: happyThing.length + 1,
+      value: happyThing.newItemValue,
+      key: generateKey(happyThing.newItemValue)
+    });
+    this.setState({ happyThings: happyThings });
+  }
+
+  removeItem(itemIndex) {
+    console.log("in here!")
+    happyThings.splice(itemIndex, 1);
+    console.log(happyThings)
+    this.setState({ happyThings: happyThings });
+  }
+
+  render() {
+    return (
+      <div id="main">
+        <GratitudeListHeader />
+        <GratitudeList
+          items={this.state.happyThings}
+          removeItem={this.removeItem}
+        />
+        <GratitudeForm addItem={this.addItem} />
+      </div >
+    );
+  }
+}
+
+export default GratitudeListApp;
