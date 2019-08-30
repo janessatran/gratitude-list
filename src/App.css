@@ -24,6 +24,7 @@ li {
 
 ul>li:hover {
   background-color: #F5F5F5;
+  opacity: 1;
 }
 
 .form-inline .form-control {
@@ -31,17 +32,25 @@ ul>li:hover {
   margin-left: 80px;
 }
 
-.done {
-  color: red;
-  text-decoration: line-through;
-}
-
-.undone {
-  color: #61DAFB;
-}
 
 .icon {
   margin: 6px 10px 6px 0;
+}
+.item-date {
+  margin-left: 2%;
+  font-size: 70%;
+  color: red;
+  float: center;
+  opacity: 0;
+}
+
+.list-item {
+  text-align: left;
+}
+
+.list-item:hover ~ .item-date{
+  max-height: inherit;
+  opacity: 1;
 }
 
 .close {

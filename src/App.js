@@ -16,6 +16,7 @@ class GratitudeList extends React.Component {
         <GratitudeListItem
           key={item.key}
           item={item}
+          date={item.date}
           removeItem={this.props.removeItem}
         />
       );
@@ -29,13 +30,12 @@ class GratitudeList extends React.Component {
 class GratitudeListItem extends React.Component {
   constructor(props) {
     super(props);
-    this.onClickClose = this.onClickClose.bind(this);
+    this.onClickDelete = this.onClickDelete.bind(this);
   }
 
-  onClickClose() {
+  onClickDelete() {
     let index = parseInt(this.props.index);
     this.props.removeItem(index);
-    console.log('hello!');
   }
 
   render() {
@@ -43,16 +43,20 @@ class GratitudeListItem extends React.Component {
       <li className="list-group-item">
         <div className="item">
           <span
-            className="glyphicon glyphicon-ok icon"
-            aria-hidden="true"
+            className="list-item"
           >
+            {this.props.item.value}
           </span>
-          {this.props.item.value}
+          <span className="item-date">
+            {this.props.item.date}
+          </span>
           <button
             type="button"
             className="close"
-            onClick={this.onClickClose}>&times;
-            </button>
+            onClick={this.onClickDelete}
+          >
+            remove
+          </button>
         </div>
       </li>
     )
@@ -119,7 +123,8 @@ class GratitudeListApp extends React.Component {
     happyThings.unshift({
       index: happyThing.length + 1,
       value: happyThing.newItemValue,
-      key: generateKey(happyThing.newItemValue)
+      key: generateKey(happyThing.newItemValue),
+      date: new Date().toLocaleString()
     });
     this.setState({ happyThings: happyThings });
   }
@@ -135,11 +140,11 @@ class GratitudeListApp extends React.Component {
     return (
       <div id="main">
         <GratitudeListHeader />
+        <GratitudeForm addItem={this.addItem} />
         <GratitudeList
           items={this.state.happyThings}
           removeItem={this.removeItem}
         />
-        <GratitudeForm addItem={this.addItem} />
       </div >
     );
   }
