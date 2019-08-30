@@ -8,8 +8,6 @@ const generateKey = (pre) => {
 }
 
 let happyThings = [];
-// happyThings.push({ index: 1, value: 'having a roof over my head', key: generateKey('having a roof') })
-
 
 class GratitudeList extends React.Component {
   render() {
@@ -48,7 +46,6 @@ class GratitudeListItem extends React.Component {
             className="glyphicon glyphicon-ok icon"
             aria-hidden="true"
           >
-
           </span>
           {this.props.item.value}
           <button
@@ -96,7 +93,7 @@ class GratitudeForm extends React.Component {
         />
         <button
           type="submit"
-          className="btn btn-default">Add
+          className="btn btn-md btn-default">Add
       </button>
       </form>
     );
@@ -105,7 +102,7 @@ class GratitudeForm extends React.Component {
 
 class GratitudeListHeader extends React.Component {
   render() {
-    return <h1>__ Reasons to be Happy</h1>;
+    return <h1>{happyThings.length} Reason(s) to be Happy</h1>;
   }
 }
 
