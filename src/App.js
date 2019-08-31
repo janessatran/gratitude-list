@@ -52,11 +52,12 @@ class GratitudeListItem extends React.Component {
           </span>
           <button
             type="button"
-            className="close"
+            className="btn"
             onClick={this.onClickDelete}
           >
             remove
           </button>
+
         </div>
       </li>
     )
@@ -89,17 +90,20 @@ class GratitudeForm extends React.Component {
         onSubmit={this.onSubmit}
         className="form-inline"
       >
-        <input
-          type="text"
-          ref="itemName"
-          className="form-control"
-          placeholder="I'm grateful for..."
-        />
+        <div class="group">
+          <input
+            type="text"
+            ref="itemName"
+          />
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>I'm grateful for...</label>
+        </div>
         <button
           type="submit"
           className="btn btn-md btn-default">Add
       </button>
-      </form>
+      </form >
     );
   }
 }

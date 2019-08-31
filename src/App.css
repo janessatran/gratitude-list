@@ -1,7 +1,10 @@
+
+
 html, body {
   height: 100%;
   color: rgb(70, 48, 0);
-  background: rgb(224, 176, 73);
+  background: rgb(255, 255, 255);
+  padding: 10%;
 }
 
 h1 {
@@ -9,13 +12,15 @@ h1 {
 }
 
 #main {
-  width: 600px;
+  width: 100%;
+  max-width: 600px;
   margin: 0 auto;
   text-align: left;
 }
 
 ul {
   list-style: none;
+  padding: 5%;
 }
 
 li {
@@ -26,12 +31,6 @@ ul>li:hover {
   background-color: #F5F5F5;
   opacity: 1;
 }
-
-.form-inline .form-control {
-  width: 50%;
-  margin-left: 80px;
-}
-
 
 .icon {
   margin: 6px 10px 6px 0;
@@ -52,7 +51,138 @@ ul>li:hover {
   max-height: inherit;
   opacity: 1;
 }
+/* form starting stylings ------------------------------- */
+.group 			  { 
+  position:relative; 
+  margin-bottom:45px; 
+}
+input 	{
+  font-size:18px;
+  padding:10px 10px 10px 5px;
+  display:block;
+  width: 100%;
+  max-width: 500px;
+  box-sizing: border-box;
+  border:none;
+  border-bottom:1px solid #757575;
+}
+input:focus { 
+  outline:none; 
+}
 
-.close {
-  float: right;
+/* LABEL ======================================= */
+label 				 {
+  padding-top: 10px;
+  color:#999; 
+  font-size:18px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label:after 		{
+  top:-20px;
+  font-size:14px;
+  color:rgb(146, 174, 82);
+}
+
+/* BOTTOM BARS ================================= */
+.bar 	{ 
+  position:relative; 
+  display:block; 
+  width:100%;
+  max-width: 500px;
+ }
+.bar:before, .bar:after 	{
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:rgb(134, 174, 82); 
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%; 
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%; 
+  width:100px; 
+  top:25%; 
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+
+/* buttons */
+.btn {
+  background: #fff;
+  color: mix(black, $muted-color, 25%);
+  border:none;
+  padding:10px 20px;
+  border-radius:3px;
+  letter-spacing:0.06em;
+  text-transform: ppercase;
+  text-decoration:none;
+  outline:none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+  
+  &:hover {
+    color: mix(black, $muted-color, 30%);
+    box-shadow: 0 7px 14px rgba(0, 0, 0, 0.18), 0 5px 5px rgba(0, 0, 0, 0.12);
+  }
+  &.btn-link {
+    background: $hl-color;
+    color: mix(white, $hl-color, 80%);
+    &:hover {
+      background: darken($hl-color, 5%);
+      color: mix(white, $hl-color, 85%);
+    }
+  }
+}
+
+.btn-box {
+  text-align: center;
+  margin: 50px 0;
 }
