@@ -50,14 +50,12 @@ class GratitudeListItem extends React.Component {
           <span className="item-date">
             {this.props.item.date}
           </span>
-          <button
-            type="button"
-            className="btn"
+          <span
+            className="close"
             onClick={this.onClickDelete}
           >
-            remove
-          </button>
-
+            X
+        </span>
         </div>
       </li>
     )
@@ -98,11 +96,11 @@ class GratitudeForm extends React.Component {
           <span class="highlight"></span>
           <span class="bar"></span>
           <label>I'm grateful for...</label>
+          <button
+            type="submit"
+            className="btn btn-md btn-default">Add
+          </button>
         </div>
-        <button
-          type="submit"
-          className="btn btn-md btn-default">Add
-      </button>
       </form >
     );
   }
