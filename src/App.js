@@ -98,7 +98,8 @@ class GratitudeForm extends React.Component {
           <label>I'm grateful for...</label>
           <button
             type="submit"
-            className="btn btn-md btn-default">Add
+            className="btn"
+            id="add-button">Add
           </button>
         </div>
       </form >
@@ -108,7 +109,9 @@ class GratitudeForm extends React.Component {
 
 class GratitudeListHeader extends React.Component {
   render() {
-    return <h1>{happyThings.length} Reason(s) to be Happy</h1>;
+    let countHappyThings = happyThings.length > 0 ? happyThings.length : '';
+    let headerString = countHappyThings > 1 ? " Reasons to be happy" : " Reason to be happy";
+    return <h1>{countHappyThings} {headerString}</h1>;
   }
 }
 
