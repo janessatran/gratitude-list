@@ -110,7 +110,7 @@ class GratitudeForm extends React.Component {
 class GratitudeListHeader extends React.Component {
   render() {
     let countHappyThings = happyThings.length > 0 ? happyThings.length : '';
-    let headerString = countHappyThings > 1 ? " Reasons to be happy" : " Reason to be happy";
+    let headerString = countHappyThings > 1 ? " reasons to be happy" : " reason to be happy";
     return <h1>{countHappyThings} {headerString}</h1>;
   }
 }
