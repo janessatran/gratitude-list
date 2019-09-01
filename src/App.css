@@ -1,8 +1,8 @@
 
 html, body {
   /* height: 100%; */
-  color: rgb(0, 0, 0);
-  background: rgb(255, 255, 255);
+  color: rgb(126, 68, 15);
+  background: rgb(233, 227, 211);;
   padding: 30px;
 }
 
@@ -10,6 +10,10 @@ h1 {
   margin: 20px 0 15px 0;
   padding-bottom: 20px;
   text-align: center;
+}
+
+input {
+  background: rgb(233, 227, 211);
 }
 
 #main {
@@ -98,7 +102,7 @@ input:focus {
 /* LABEL ======================================= */
 label 				 {
   padding-top: 10px;
-  color:#999; 
+  color:rgb(24, 24, 24); 
   font-size:18px;
   font-weight:normal;
   position:absolute;
@@ -114,7 +118,7 @@ label 				 {
 input:focus ~ label, input:valid ~ label:after 		{
   top:-20px;
   font-size:14px;
-  color:rgb(146, 174, 82);
+  color:rgb(78, 114, 31);
 }
 
 /* BOTTOM BARS ================================= */
@@ -130,7 +134,7 @@ input:focus ~ label, input:valid ~ label:after 		{
   width:0;
   bottom:1px; 
   position:absolute;
-  background:rgb(134, 174, 82); 
+  background:rgb(78, 114, 31); 
   transition:0.2s ease all; 
   -moz-transition:0.2s ease all; 
   -webkit-transition:0.2s ease all;
@@ -168,15 +172,15 @@ input:focus ~ .highlight {
 
 /* ANIMATIONS ================ */
 @-webkit-keyframes inputHighlighter {
-	from { background:rgb(134, 174, 82); }
+	from { background:rgb(78, 114, 31); }
   to 	{ width:0; background:transparent; }
 }
 @-moz-keyframes inputHighlighter {
-	from { background:rgb(134, 174, 82); }
+	from { background:rgb(78, 114, 31); }
   to 	{ width:0; background:transparent; }
 }
 @keyframes inputHighlighter {
-	from { background:rgb(134, 174, 82); }
+	from { background:rgb(78, 114, 31); }
   to 	{ width:0; background:transparent; }
 }
 
@@ -185,7 +189,7 @@ input:focus ~ .highlight {
   display: block;
   margin: 20px auto;
   background: rgba(153, 151, 151, 0.274);
-  color: rgb(134, 174, 82);
+  color: rgb(78, 114, 31);
   border:0px;
   padding:10px 20px;
   border-radius:3px;

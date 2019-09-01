@@ -1,7 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-
 
 const generateKey = (pre) => {
   return `${pre}_${new Date().getTime()}`;
@@ -88,13 +86,13 @@ class GratitudeForm extends React.Component {
         onSubmit={this.onSubmit}
         className="form-inline"
       >
-        <div class="group">
+        <div className="group">
           <input
             type="text"
             ref="itemName"
           />
-          <span class="highlight"></span>
-          <span class="bar"></span>
+          <span className="highlight"></span>
+          <span className="bar"></span>
           <label>I'm grateful for...</label>
           <button
             type="submit"
@@ -121,6 +119,24 @@ class GratitudeListApp extends React.Component {
     this.addItem = this.addItem.bind(this);
     this.removeItem = this.removeItem.bind(this);
     this.state = { happyThings: [], };
+  }
+
+  componentDidMoint() {
+    // call our fetch function below once the component mounts
+    this.callBackendAPI()
+      .then(res => this.setState({ happyThings: res.express }))
+      .catch(err => console.log(err))
+  }
+
+  // Fetches our GET route from the Express server
+  callBackendAPI = async () => {
+    const response = await fetch('/express_backend');
+    const body = await response.json();
+
+    if (response.status !== 200) {
+      throw Error(body.message)
+    }
+    return body;
   }
 
   addItem(happyThing) {
