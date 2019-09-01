@@ -5,8 +5,8 @@ const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 
 // load input validation
-const validateRegisterInput = require('../../validation/register');
-const validateLoginInput = require('../../validation/login');
+const validateRegisterInput = require('../../models/validation/register.js');
+const validateLoginInput = require('../../models/validation/login');
 
 // load user model
 const User = require('../../models/User');
@@ -98,3 +98,5 @@ router.post('/login', (req, res) => {
     });
   });
 });
+
+module.exports = router;
