@@ -1,7 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-
 
 const generateKey = (pre) => {
   return `${pre}_${new Date().getTime()}`;
@@ -88,13 +86,13 @@ class GratitudeForm extends React.Component {
         onSubmit={this.onSubmit}
         className="form-inline"
       >
-        <div class="group">
+        <div className="group">
           <input
             type="text"
             ref="itemName"
           />
-          <span class="highlight"></span>
-          <span class="bar"></span>
+          <span className="highlight"></span>
+          <span className="bar"></span>
           <label>I'm grateful for...</label>
           <button
             type="submit"
@@ -118,9 +116,14 @@ class GratitudeListHeader extends React.Component {
 class GratitudeListApp extends React.Component {
   constructor(props) {
     super(props);
+    let storedList = JSON.parse(localStorage.getItem("happyThings"));
+    if (storedList) {
+      this.state = { happyThings: storedList }
+    } else {
+      this.state = { happyThings: [] };
+    }
     this.addItem = this.addItem.bind(this);
     this.removeItem = this.removeItem.bind(this);
-    this.state = { happyThings: [], };
   }
 
   addItem(happyThing) {
@@ -132,6 +135,8 @@ class GratitudeListApp extends React.Component {
       date: new Date().toLocaleString()
     });
     this.setState({ happyThings: happyThings });
+    localStorage.setItem('happyThings', JSON.stringify(happyThings));
+    console.log(localStorage);
   }
 
   removeItem(itemIndex) {
