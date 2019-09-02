@@ -127,7 +127,6 @@ class GratitudeListApp extends React.Component {
   }
 
   addItem(happyThing) {
-    console.log(happyThing);
     happyThings.unshift({
       index: happyThing.length + 1,
       value: happyThing.newItemValue,
@@ -136,13 +135,10 @@ class GratitudeListApp extends React.Component {
     });
     this.setState({ happyThings: happyThings });
     localStorage.setItem('happyThings', JSON.stringify(happyThings));
-    console.log(localStorage);
   }
 
   removeItem(itemIndex) {
-    console.log("in here!")
     happyThings.splice(itemIndex, 1);
-    console.log(happyThings)
     this.setState({ happyThings: happyThings });
   }
 
