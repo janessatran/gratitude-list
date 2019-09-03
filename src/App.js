@@ -63,6 +63,7 @@ class GratitudeListItem extends React.Component {
 class GratitudeForm extends React.Component {
   constructor(props) {
     super(props);
+    console.log(this.props);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
@@ -79,6 +80,7 @@ class GratitudeForm extends React.Component {
       this.refs.form.reset();
     }
   }
+
   render() {
     return (
       <form
@@ -107,23 +109,29 @@ class GratitudeForm extends React.Component {
 
 class GratitudeListHeader extends React.Component {
   render() {
-    let countHappyThings = happyThings.length > 0 ? happyThings.length : '';
-    let headerString = countHappyThings > 1 ? " reasons to be happy" : " reason to be happy";
-    return <h1>{countHappyThings} {headerString}</h1>;
+    let count = ''
+    let storedList = JSON.parse(localStorage.getItem('storedList'))
+    if (storedList.length > 0) {
+      count = storedList.length
+    }
+    let headerString = count > 1 ? " reasons to be happy" : " reason to be happy";
+    return <h1>{count} {headerString}</h1>;
   }
 }
 
 class GratitudeListApp extends React.Component {
   constructor(props) {
     super(props);
-    let storedList = JSON.parse(localStorage.getItem("happyThings"));
-    if (storedList) {
-      this.state = { happyThings: storedList }
-    } else {
-      this.state = { happyThings: [] };
-    }
     this.addItem = this.addItem.bind(this);
     this.removeItem = this.removeItem.bind(this);
+    let list = []
+
+    let storedList = JSON.parse(localStorage.getItem('storedList'))
+    console.log(storedList);
+    if (storedList.length > 0) {
+      list = storedList
+    }
+    this.state = { happyThings: list }
   }
 
   addItem(happyThing) {
@@ -134,7 +142,7 @@ class GratitudeListApp extends React.Component {
       date: new Date().toLocaleString()
     });
     this.setState({ happyThings: happyThings });
-    localStorage.setItem('happyThings', JSON.stringify(happyThings));
+    localStorage.setItem('storedList', JSON.stringify(happyThings));
   }
 
   removeItem(itemIndex) {
