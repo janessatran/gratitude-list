@@ -63,7 +63,6 @@ class GratitudeListItem extends React.Component {
 class GratitudeForm extends React.Component {
   constructor(props) {
     super(props);
-    console.log(this.props);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
@@ -160,3 +159,10 @@ class GratitudeListApp extends React.Component {
 }
 
 export default GratitudeListApp;
+
+export {
+  GratitudeForm,
+  GratitudeList,
+  GratitudeListItem,
+  GratitudeListHeader
+};
