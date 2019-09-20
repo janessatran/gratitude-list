@@ -67,10 +67,6 @@ class GratitudeForm extends React.Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  componentDidMount() {
-    this.refs.itemName.focus();
-  }
-
   onSubmit(event) {
     event.preventDefault();
     let newItemValue = this.refs.itemName.value;
@@ -111,7 +107,7 @@ class GratitudeListHeader extends React.Component {
   render() {
     let count = ''
     let storedList = JSON.parse(localStorage.getItem('storedList'))
-    if (storedList.length > 0) {
+    if (storedList != null) {
       count = storedList.length
     }
     let headerString = count > 1 ? " reasons to be happy" : " reason to be happy";
@@ -125,8 +121,10 @@ class GratitudeListApp extends React.Component {
     this.addItem = this.addItem.bind(this);
     this.removeItem = this.removeItem.bind(this);
     let storedList = JSON.parse(localStorage.getItem('storedList'))
-    console.log(storedList);
-    happyThings = storedList.length > 0 ? storedList : []
+
+    if (storedList != null) {
+      happyThings = storedList
+    }
 
     this.state = { happyThings: happyThings }
   }
