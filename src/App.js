@@ -124,14 +124,11 @@ class GratitudeListApp extends React.Component {
     super(props);
     this.addItem = this.addItem.bind(this);
     this.removeItem = this.removeItem.bind(this);
-    let list = []
-
     let storedList = JSON.parse(localStorage.getItem('storedList'))
     console.log(storedList);
-    if (storedList.length > 0) {
-      list = storedList
-    }
-    this.state = { happyThings: list }
+    happyThings = storedList.length > 0 ? storedList : []
+
+    this.state = { happyThings: happyThings }
   }
 
   addItem(happyThing) {
