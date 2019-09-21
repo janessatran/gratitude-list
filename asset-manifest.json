@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/gratitude-list/static/css/main.0ee1cd3b.chunk.css",
-    "main.js": "/gratitude-list/static/js/main.39bae82d.chunk.js",
-    "main.js.map": "/gratitude-list/static/js/main.39bae82d.chunk.js.map",
+    "main.js": "/gratitude-list/static/js/main.64266e12.chunk.js",
+    "main.js.map": "/gratitude-list/static/js/main.64266e12.chunk.js.map",
     "runtime~main.js": "/gratitude-list/static/js/runtime~main.9ccdd0e0.js",
     "runtime~main.js.map": "/gratitude-list/static/js/runtime~main.9ccdd0e0.js.map",
     "static/js/2.4f541128.chunk.js": "/gratitude-list/static/js/2.4f541128.chunk.js",
     "static/js/2.4f541128.chunk.js.map": "/gratitude-list/static/js/2.4f541128.chunk.js.map",
     "index.html": "/gratitude-list/index.html",
-    "precache-manifest.280dae877ad9dad0f805c7cf08d72694.js": "/gratitude-list/precache-manifest.280dae877ad9dad0f805c7cf08d72694.js",
+    "precache-manifest.39a7a92105362215fb6fab491fc5cac3.js": "/gratitude-list/precache-manifest.39a7a92105362215fb6fab491fc5cac3.js",
     "service-worker.js": "/gratitude-list/service-worker.js",
     "static/css/main.0ee1cd3b.chunk.css.map": "/gratitude-list/static/css/main.0ee1cd3b.chunk.css.map"
   }

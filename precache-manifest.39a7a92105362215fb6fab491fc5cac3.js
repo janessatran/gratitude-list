@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e2676e2be03b19af8ab4d523d505d6dc",
+    "revision": "54b05e90177f665a72d7460bc8339881",
     "url": "/gratitude-list/index.html"
   },
   {
-    "revision": "e0d88d22536a027d77c6",
+    "revision": "d16f5fac97aebedf51f3",
     "url": "/gratitude-list/static/css/main.0ee1cd3b.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/gratitude-list/static/js/2.4f541128.chunk.js"
   },
   {
-    "revision": "e0d88d22536a027d77c6",
-    "url": "/gratitude-list/static/js/main.39bae82d.chunk.js"
+    "revision": "d16f5fac97aebedf51f3",
+    "url": "/gratitude-list/static/js/main.64266e12.chunk.js"
   },
   {
     "revision": "b0051cdbb70cacf04822",
