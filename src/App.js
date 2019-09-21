@@ -1,8 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './App.css';
+import { SSL_OP_TLS_BLOCK_PADDING_BUG } from 'constants';
 
-const generateKey = (pre) => {
-  return `${pre}_${new Date().getTime()}`;
+const generateKey = () => {
+  return `${new Date().getTime()}`;
 }
 
 let happyThings = [];
@@ -60,6 +62,28 @@ class ListItem extends React.Component {
   }
 }
 
+const Button = ({ onClick, className, children }) => {
+  return (
+    <button
+      onClick={onClick}
+      className={className}
+      type="button"
+    >
+      {children}
+    </button>
+  );
+
+  Button.propTypes = {
+    onClick: PropTypes.func.isRequired,
+    className: PropTypes.string,
+    children: PropTypes.node.isRequired,
+  }
+
+  Button.defaultProps = {
+    className: '',
+  }
+}
+
 class Form extends React.Component {
   constructor(props) {
     super(props);
@@ -91,11 +115,11 @@ class Form extends React.Component {
           <span className="highlight"></span>
           <span className="bar"></span>
           <label>I'm grateful for...</label>
-          <button
-            type="submit"
-            className="btn"
-            id="add-button">Add
-          </button>
+          <Button
+            onClick={this.onSubmit}
+            className="btn">
+            Add
+          </Button>
         </div>
       </form >
     );
@@ -119,6 +143,7 @@ class ListApp extends React.Component {
     super(props);
     this.addItem = this.addItem.bind(this);
     this.removeItem = this.removeItem.bind(this);
+    this.downloadList = this.downloadList.bind(this);
     let storedList = JSON.parse(localStorage.getItem('storedList'))
 
     if (storedList != null) {
@@ -128,9 +153,28 @@ class ListApp extends React.Component {
     this.state = { happyThings: happyThings }
   }
 
+  downloadList() {
+    let filename = "gratitude-list.json";
+    let contentType = "application/json;charset=utf-8;";
+
+    if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+      let blob = new Blob([decodeURIComponent(encodeURI(JSON.stringify(happyThings)))],
+        { type: contentType });
+      navigator.msSaveOrOpenBlob(blob, filename);
+    } else {
+      let temp_anchor = document.createElement('a');
+      temp_anchor.download = filename;
+      temp_anchor.href = 'data:' + contentType + ',' + encodeURIComponent(JSON.stringify(happyThings));
+      temp_anchor.target = '_blank';
+      document.body.appendChild(temp_anchor);
+      temp_anchor.click();
+      document.body.removeChild(temp_anchor);
+    }
+  }
+
   addItem(happyThing) {
     happyThings.unshift({
-      index: happyThing.length + 1,
+      index: happyThings.length + 1,
       value: happyThing.newItemValue,
       key: generateKey(happyThing.newItemValue),
       date: new Date().toLocaleString()
@@ -145,6 +189,7 @@ class ListApp extends React.Component {
   }
 
   render() {
+    console.log(happyThings);
     return (
       <div id="main">
         <Header />
@@ -153,6 +198,11 @@ class ListApp extends React.Component {
           items={this.state.happyThings}
           removeItem={this.removeItem}
         />
+        <Button
+          onClick={this.downloadList}
+          className="download-btn">
+          Download List
+        </Button>
       </div >
     );
   }

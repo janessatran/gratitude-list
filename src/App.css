@@ -207,3 +207,27 @@ input:focus ~ .highlight {
   text-align: center;
   margin: 50px 0;
 }
+
+.download-btn {
+  display: block;
+  margin: 10px auto;
+  color: rgb(134, 174, 82);
+  border:0px;
+  padding:10px 20px;
+  border-radius:3px;
+  letter-spacing:0.06em;
+  text-transform: uppercase;
+  text-decoration:none;
+  outline:none;
+  transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+}
+
+.download-btn:hover {
+  /* background: rgb(153, 151, 151); */
+  color: rgb(189, 97, 11);
+}
+
+.download-btn-box {
+  text-align: center;
+  margin: 50px 0;
+}
