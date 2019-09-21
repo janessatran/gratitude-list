@@ -7,11 +7,11 @@ const generateKey = (pre) => {
 
 let happyThings = [];
 
-class GratitudeList extends React.Component {
+class List extends React.Component {
   render() {
     let items = this.props.items.map((item) => {
       return (
-        <GratitudeListItem
+        <ListItem
           key={item.key}
           item={item}
           date={item.date}
@@ -25,7 +25,7 @@ class GratitudeList extends React.Component {
   }
 }
 
-class GratitudeListItem extends React.Component {
+class ListItem extends React.Component {
   constructor(props) {
     super(props);
     this.onClickDelete = this.onClickDelete.bind(this);
@@ -60,7 +60,7 @@ class GratitudeListItem extends React.Component {
   }
 }
 
-class GratitudeForm extends React.Component {
+class Form extends React.Component {
   constructor(props) {
     super(props);
     this.onSubmit = this.onSubmit.bind(this);
@@ -102,7 +102,7 @@ class GratitudeForm extends React.Component {
   }
 }
 
-class GratitudeListHeader extends React.Component {
+class Header extends React.Component {
   render() {
     let count = ''
     let storedList = JSON.parse(localStorage.getItem('storedList'))
@@ -114,7 +114,7 @@ class GratitudeListHeader extends React.Component {
   }
 }
 
-class GratitudeListApp extends React.Component {
+class ListApp extends React.Component {
   constructor(props) {
     super(props);
     this.addItem = this.addItem.bind(this);
@@ -147,9 +147,9 @@ class GratitudeListApp extends React.Component {
   render() {
     return (
       <div id="main">
-        <GratitudeListHeader />
-        <GratitudeForm addItem={this.addItem} />
-        <GratitudeList
+        <Header />
+        <Form addItem={this.addItem} />
+        <List
           items={this.state.happyThings}
           removeItem={this.removeItem}
         />
@@ -158,11 +158,11 @@ class GratitudeListApp extends React.Component {
   }
 }
 
-export default GratitudeListApp;
+export default ListApp;
 
 export {
-  GratitudeForm,
-  GratitudeList,
-  GratitudeListItem,
-  GratitudeListHeader
+  Form,
+  List,
+  ListItem,
+  Header
 };
