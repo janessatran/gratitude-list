@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './App.css';
-import { SSL_OP_TLS_BLOCK_PADDING_BUG } from 'constants';
 
 const generateKey = () => {
   return `${new Date().getTime()}`;
@@ -63,16 +62,6 @@ class ListItem extends React.Component {
 }
 
 const Button = ({ onClick, className, children }) => {
-  return (
-    <button
-      onClick={onClick}
-      className={className}
-      type="button"
-    >
-      {children}
-    </button>
-  );
-
   Button.propTypes = {
     onClick: PropTypes.func.isRequired,
     className: PropTypes.string,
@@ -82,6 +71,17 @@ const Button = ({ onClick, className, children }) => {
   Button.defaultProps = {
     className: '',
   }
+
+  return (
+    <button
+      onClick={onClick}
+      className={className}
+      type="button"
+    >
+      {children}
+    </button>
+  )
+
 }
 
 class Form extends React.Component {
@@ -91,6 +91,7 @@ class Form extends React.Component {
   }
 
   onSubmit(event) {
+    console.log('hi!');
     event.preventDefault();
     let newItemValue = this.refs.itemName.value;
 
@@ -104,6 +105,7 @@ class Form extends React.Component {
     return (
       <form
         ref="form"
+        type="submit"
         onSubmit={this.onSubmit}
         className="form-inline"
       >
@@ -138,7 +140,7 @@ class Header extends React.Component {
   }
 }
 
-class ListApp extends React.Component {
+class GratitudeListApp extends React.Component {
   constructor(props) {
     super(props);
     this.addItem = this.addItem.bind(this);
@@ -189,7 +191,6 @@ class ListApp extends React.Component {
   }
 
   render() {
-    console.log(happyThings);
     return (
       <div id="main">
         <Header />
@@ -208,11 +209,12 @@ class ListApp extends React.Component {
   }
 }
 
-export default ListApp;
+export default GratitudeListApp;
 
 export {
   Form,
   List,
   ListItem,
-  Header
+  Header,
+  Button
 };
