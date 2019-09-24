@@ -5,7 +5,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import renderer from 'react-test-renderer';
 import { spy } from 'sinon';
 
-import GratitudeListApp, { Form, Button } from './App';
+import GratitudeListApp, { Form, Button, Header } from './App';
 
 import { tsExternalModuleReference, exportAllDeclaration } from '@babel/types';
 
@@ -81,4 +81,26 @@ describe('Button', () => {
 
     expect(testHandler.calledOnce).toBe(true);
   });
+})
+
+describe('Header', () => {
+  it('updates the number based on the length of the happyThings list', () => {
+    let happyThings = ['bananas', 'apples', 'oranges'];
+    localStorage.setItem('storedList', JSON.stringify(happyThings));
+
+    const component = shallow(<Header />);
+    let header = component.find('h1').text();
+
+    expect(header).toBe('3 reasons to be happy');
+  })
+
+  it('uses the correct pluralization based on number of happyThings', () => {
+    let happyThings = ['one'];
+    localStorage.setItem('storedList', JSON.stringify(happyThings));
+
+    const component = shallow(<Header />);
+    let singularItemHeader = component.find('h1').text();
+
+    expect(singularItemHeader).toBe('1 reason to be happy');
+  })
 })

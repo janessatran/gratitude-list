@@ -135,7 +135,7 @@ class Header extends React.Component {
     if (storedList != null) {
       count = storedList.length
     }
-    let headerString = count > 1 ? " reasons to be happy" : " reason to be happy";
+    let headerString = count > 1 ? "reasons to be happy" : "reason to be happy";
     return <h1>{count} {headerString}</h1>;
   }
 }
