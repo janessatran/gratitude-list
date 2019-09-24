@@ -87,10 +87,10 @@ const Button = ({ onClick, className, children }) => {
 class Form extends React.Component {
   constructor(props) {
     super(props);
-    this.onSubmit = this.onSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  onSubmit(event) {
+  handleSubmit(event) {
     console.log('hi!');
     event.preventDefault();
     let newItemValue = this.refs.itemName.value;
@@ -106,7 +106,7 @@ class Form extends React.Component {
       <form
         ref="form"
         type="submit"
-        onSubmit={this.onSubmit}
+        onSubmit={this.handleSubmit}
         className="form-inline"
       >
         <div className="group">
@@ -118,7 +118,7 @@ class Form extends React.Component {
           <span className="bar"></span>
           <label>I'm grateful for...</label>
           <Button
-            onClick={this.onSubmit}
+            onClick={this.handleSubmit}
             className="btn">
             Add
           </Button>

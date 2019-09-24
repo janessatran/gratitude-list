@@ -29,8 +29,6 @@ describe('GratitudeListApp', () => {
     expect(component).toMatchSnapshot()
   })
 
-
-
 })
 
 describe('Form', () => {
@@ -50,20 +48,6 @@ describe('Form', () => {
     const component = shallow(<Form />)
     expect(component).toMatchSnapshot();
   })
-
-  // it('should call addItem when form is submitted', () => {
-  //   const addItem = spy();
-  //   const component = mount(
-  //     <Form onSubmit={addItem} />
-  //   );
-  //   component
-  //     .find(".form-inline")
-  //     .last()
-  //     .simulate("submit");
-
-  //   console.log(component.debug())
-  //   expect(addItem.calledOnce).toBe(true);
-  // })
 
 })
 
