@@ -49,6 +49,24 @@ describe('Form', () => {
     expect(component).toMatchSnapshot();
   })
 
+  // it('should call addItem when form is submitted', () => {
+  //   const addItem = spy();
+  //   const fakeEvent = { preventDefault: () => console.log('preventDefault') };
+  //   const component = mount(
+  //     <Form onSubmit={addItem} />
+  //   );
+
+  //   let input = component.find('input').first();
+
+  //   console.log(input.debug())
+
+  //   input.innerHTML = 'text'       // have to get the node...
+  //   input.first().simulate('change')  // have to use the wrapper...
+  //   component
+  //     .simulate("submit", fakeEvent);
+
+  //   expect(addItem.callCount).toBe(1);
+  // })
 })
 
 describe('Button', () => {

@@ -93,7 +93,7 @@ class Form extends React.Component {
   handleSubmit(event) {
     console.log('hi!');
     event.preventDefault();
-    let newItemValue = this.refs.itemName.value;
+    let newItemValue = this.itemName.value;
 
     if (newItemValue) {
       this.props.addItem({ newItemValue });
@@ -106,13 +106,13 @@ class Form extends React.Component {
       <form
         ref="form"
         type="submit"
-        onSubmit={this.handleSubmit}
+        onSubmit={e => this.handleSubmit(e)}
         className="form-inline"
       >
         <div className="group">
           <input
             type="text"
-            ref="itemName"
+            ref={input => (this.itemName = input)}
           />
           <span className="highlight"></span>
           <span className="bar"></span>
@@ -188,6 +188,7 @@ class GratitudeListApp extends React.Component {
   removeItem(itemIndex) {
     happyThings.splice(itemIndex, 1);
     this.setState({ happyThings: happyThings });
+    localStorage.setItem('storedList', JSON.stringify(happyThings));
   }
 
   render() {
