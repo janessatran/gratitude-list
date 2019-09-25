@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Enzyme, { shallow, mount } from 'enzyme';
+import Enzyme, { shallow, mount, render } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import renderer from 'react-test-renderer';
-import { spy } from 'sinon';
+import sinon from 'sinon';
 
 import GratitudeListApp, { Form, Button, Header } from './App';
 
@@ -49,29 +49,11 @@ describe('Form', () => {
     expect(component).toMatchSnapshot();
   })
 
-  // it('should call addItem when form is submitted', () => {
-  //   const addItem = spy();
-  //   const fakeEvent = { preventDefault: () => console.log('preventDefault') };
-  //   const component = mount(
-  //     <Form onSubmit={addItem} />
-  //   );
-
-  //   let input = component.find('input').first();
-
-  //   console.log(input.debug())
-
-  //   input.innerHTML = 'text'       // have to get the node...
-  //   input.first().simulate('change')  // have to use the wrapper...
-  //   component
-  //     .simulate("submit", fakeEvent);
-
-  //   expect(addItem.callCount).toBe(1);
-  // })
 })
 
 describe('Button', () => {
   it('creates a new button with onClick handler', () => {
-    const testHandler = spy();
+    const testHandler = sinon.spy();
     const component = shallow(
       <Button children={"New Button"} onClick={testHandler} />
     );
